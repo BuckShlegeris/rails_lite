@@ -31,12 +31,18 @@ class BaseController
   end
 
   def render(name)
-    File.open("./views/#{class_name}/#{name}.html.erb") do |file|
-      template = ERB.new(file.read)
-      template_result = template.result(binding)
+    template_text = File.read("./views/#{class_name}/#{name}.html.erb")
+    template = ERB.new(template_text)
+    template_result = template.result(binding)
 
-      show_html(template.result(binding))
-    end
+    application_template_text = File.read("./views/layouts/application.html.erb")
+
+    application_template_text.gsub!("<% yield %>", template_result)
+
+    application_template = ERB.new(application_template_text)
+    application_template_result = application_template.result(binding)
+
+    show_html(application_template_result)
   end
 
   def session

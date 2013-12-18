@@ -12,3 +12,4 @@ Currently, it supports, with syntax similar but not identical to Rails:
 * link_to, button_to
 * session, flash
 * Url helpers like `user_url`, as long as they don't take arguments
+* All views inherit from views/layouts/application.html.erb
