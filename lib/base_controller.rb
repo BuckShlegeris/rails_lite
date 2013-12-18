@@ -2,7 +2,7 @@ load "./lib/session.rb"
 load "./lib/flash.rb"
 
 class BaseController
-  attr_accessor :response, :request, :params, :class_name
+  attr_accessor :response, :request, :params, :class_name, :routes
 
   def initialize
     # As soon as we call redirect_to or render, we set this to be true.
@@ -64,6 +64,23 @@ class BaseController
                     value=\"#{options[:method]}\">"
     end
     out += "</form>"
+  end
+
+  def method_missing(name, *args, &block)
+    out = url_helper(name)
+    if out
+      out
+    else
+      super
+    end
+  end
+
+  def url_helper(url_name)
+    @routes.each do |route|
+      if route.response.gsub('#','_')+"_url" == url_name.to_s
+        return route.path.source
+      end
+    end
   end
 
 end

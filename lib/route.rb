@@ -21,7 +21,7 @@ class Route
   end
 
 
-  def respond(request, response)
+  def respond(request, response, routes)
     puts "Directing request to #{self.response}"
     load "./lib/base_controller.rb"
     class_name, method_name = self.response.split('#')
@@ -31,6 +31,8 @@ class Route
     controller.request = request
     controller.response = response
     controller.class_name = class_name
+
+    controller.routes = routes
 
     controller.params = get_params(request)
 

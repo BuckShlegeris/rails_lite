@@ -37,7 +37,7 @@ class Router
 
     @routes.each do |route|
       if route.match?(request)
-        route.respond(request, response)
+        route.respond(request, response, @routes)
         return
       end
     end

@@ -13,7 +13,7 @@ class UserController < BaseController
     render :form
   end
 
-  def puts
+  def putting_things
     show_html "putting!!!!1!"
   end
 end
