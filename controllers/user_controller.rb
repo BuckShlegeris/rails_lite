@@ -1,6 +1,7 @@
 class UserController < BaseController
   def show
     session["lol"] = (session["lol"] || 0) + 1
+    flash["lol"] = "hello world"
     render :show
   end
 

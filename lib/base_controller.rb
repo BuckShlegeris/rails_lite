@@ -1,4 +1,5 @@
 load "./lib/session.rb"
+load "./lib/flash.rb"
 
 class BaseController
   attr_accessor :response, :request, :params, :class_name
@@ -25,6 +26,7 @@ class BaseController
       response.body = string
       @response_decided = true
       self.session.save(response)
+      self.flash.save(response)
     end
   end
 
@@ -40,6 +42,13 @@ class BaseController
   def session
     @session ||= Session.new(@request, @response)
   end
+
+  def flash
+    @flash ||= Flash.new(@request, @response)
+    p "flashing! #{@flash["lol"]}"
+    @flash
+  end
+
 
   def link_to(name, url)
     "<a href=\"#{url}\">#{name}</a>"
