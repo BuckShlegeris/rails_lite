@@ -28,6 +28,18 @@ class Router
     end
   end
 
+  def resources(name)
+    draw do
+      get "/#{name}/(?<id>\\d+)" => "#{name}\#show"
+      get "/#{name}" =>"#{name}\#index"
+      get "/#{name}/new" => "#{name}\#new"
+      post "/#{name}" => "#{name}\#create"
+      delete "/#{name}/(?<id>\\d+)" => "#{name}\#delete"
+      get "/#{name}/(?<id>\\d+)/edit" => "#{name}\#edit"
+      put "/#{name}/(?<id>\\d+)" => "#{name}\#update"
+    end
+  end
+
   def draw(&prc)
     prc.call
   end

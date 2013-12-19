@@ -51,7 +51,6 @@ module Associatable
     if @assoc_params.nil?
       @assoc_params = {}
     end
-    p @assoc_params
     @assoc_params
   end
 

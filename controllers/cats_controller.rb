@@ -28,7 +28,6 @@ class CatsController < BaseController
 
   def delete
     @cat = Cat.find(params["id"])
-    p @cat
     @cat.destroy
     @cats = Cat.all
     render :index

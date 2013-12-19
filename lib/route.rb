@@ -36,6 +36,8 @@ class Route
 
     controller.params = get_params(request)
 
+    puts "params are #{controller.params}"
+
     controller.send(method_name)
   end
 
