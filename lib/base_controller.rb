@@ -1,6 +1,11 @@
 load "./lib/session.rb"
 load "./lib/flash.rb"
 
+Dir.entries("./models").each do |model|
+  next if [".",".."].include? model
+  require "./models/#{model}"
+end
+
 class BaseController
   attr_accessor :response, :request, :params, :class_name, :routes
 
@@ -51,7 +56,6 @@ class BaseController
 
   def flash
     @flash ||= Flash.new(@request, @response)
-    p "flashing! #{@flash["lol"]}"
     @flash
   end
 
@@ -73,7 +77,7 @@ class BaseController
   end
 
   def method_missing(name, *args, &block)
-    out = url_helper(name)
+    out = url_helper(name, args)
     if out
       out
     else
@@ -81,12 +85,14 @@ class BaseController
     end
   end
 
-  def url_helper(url_name)
+  def url_helper(url_name, args)
     @routes.each do |route|
       if route.response.gsub('#','_')+"_url" == url_name.to_s
         return route.path.source
       end
     end
+
+    throw "uh, can't help that much..."
   end
 
 end

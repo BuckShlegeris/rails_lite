@@ -5,7 +5,6 @@ class Flash
     @content = {}
     @new_content = {}
     request.cookies.each do |cookie|
-      p [cookie.name, cookie.value]
       if cookie.name == "rails-lite-flash"
         @content = JSON.parse(cookie.value)
         return

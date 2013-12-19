@@ -1,7 +1,67 @@
-<h1>Buck's Super App!</h1>
+<head>
+  <style>
+    table {
+        border-collapse:collapse;
+    }
 
-<div id="main">
+    table, th, td {
+        background-color: #ee88bb;
+        border: 2px solid black;
+        padding:5px;
+    }
 
-<% yield %>
+    #heading {
+        font-size: 20px;
+        text-align: center;
+    }
 
-</div>
+    #title {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ee88bb;
+        border:2px solid;
+        border-radius:25px;
+        text-align: center;
+    }
+
+    #userdetails {
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ee88fb;
+        border:1px solid;
+        border-radius:25px;
+        text-align: center;
+    }
+
+    #main {
+        width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #eeddbb;
+        border:2px solid;
+        border-radius:25px;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    body {
+        background-color:#FF00FF;
+        font-family: "verdana"
+    }
+  </style>
+</head>
+
+<body>
+  <div id="title">
+    <h1>Cat Tracking App!</h1>
+  </div>
+
+  <div id="main">
+    <% yield %>
+  </div>
+</body>

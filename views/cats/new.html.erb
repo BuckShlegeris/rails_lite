@@ -1,0 +1,13 @@
+<h2>Make a new cat!</h2>
+
+<form method="POST" action=<%= cats_index_url %>>
+  <ul>
+    <li>
+      Cat name: <input name="cat[name]">
+    </li>
+    <li>
+      Cat human id: <input name="cat[owner_id]">
+    </li>
+  </ul>
+  <input type="submit" value="make new cat">
+</form>

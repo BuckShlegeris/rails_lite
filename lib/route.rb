@@ -52,7 +52,7 @@ class Route
       params[named_capture] = match_data[places[0]]
     end
 
-    check_for_injections(params)
+   # check_for_injections(params)
 
     neatify(params)
   end
@@ -81,7 +81,7 @@ class Route
   def check_for_injections(params)
     params.each do |key, value|
       (key+value).each_char do |char|
-        unless char =~ /[A-Za-z0-9.\[\]]/
+        unless char =~ /[A-Za-z0-9.\[\]=]/
           throw "dodgy stuff in the params: #{key}=#{value}"
         end
       end
