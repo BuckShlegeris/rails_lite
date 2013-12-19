@@ -19,3 +19,5 @@ And the following methods of ActiveRecord:
 * Where, save, all, find
 
 It comes with a web app in it, which demonstrates the `index`, `new`, `create`, and `show` methods of ActiveRecord.
+
+The `models`, `views`, and `controllers` folders look a lot like they do in Rails. The `routes` file is in `config`.

@@ -3,3 +3,5 @@
 <p>My human is <%= @cat.human.name %>.</p>
 
 <%= link_to "Back to all cats!", cats_index_url %>
+
+<%= button_to "Delete cat!", "/cats/#{@cat.id}", :method => :delete %>

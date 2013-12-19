@@ -75,6 +75,13 @@ class SQLObjectBase < MassObject
     @id = DBConnection.last_insert_row_id
   end
 
+  def destroy
+    DBConnection.execute(<<-SQL, id)
+      DELETE FROM #{self.class.table_name}
+      WHERE id = ?
+    SQL
+  end
+
   def attribute_values
     self.class.attributes.map do |attribute|
       send(attribute)
